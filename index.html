@@ -35,6 +35,7 @@
             color: var(--text-color);
             background-color: var(--background-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         a {
@@ -141,32 +142,21 @@
             margin-top: 80px;
         }
 
-        /* 로고 섹션 */
-        .logo-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--background-color) 100%);
-        }
-
-        .main-logo {
-            max-width: 300px;
-            height: auto;
-        }
-
-        /* 비디오 섹션 */
+        /* 비디오 섹션 - 헤더 바로 아래 */
         .video-section {
-            padding: 0;
-            background-color: #000;
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 0;
         }
 
         .video-container {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 70vh;
-            max-height: 800px;
-            overflow: hidden;
+            height: 100%;
         }
 
         .golf-video {
@@ -188,6 +178,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            z-index: 2;
         }
 
         .video-title {
@@ -204,6 +195,20 @@
             max-width: 800px;
             color: rgba(255,255,255,0.9);
             margin-bottom: 30px;
+        }
+
+        /* 로고 섹션 */
+        .logo-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--background-color) 100%);
+        }
+
+        .main-logo {
+            max-width: 300px;
+            height: auto;
         }
 
         /* 스크린 골프 소개 섹션 */
@@ -585,6 +590,10 @@
 
         /* 반응형 디자인 */
         @media (max-width: 1024px) {
+            .video-section {
+                height: 80vh;
+            }
+            
             .hero-section {
                 min-height: 500px;
                 padding: 60px 20px;
@@ -612,6 +621,18 @@
         }
 
         @media (max-width: 768px) {
+            .video-section {
+                height: 70vh;
+            }
+            
+            .video-title {
+                font-size: 36px;
+            }
+            
+            .video-subtitle {
+                font-size: 18px;
+            }
+            
             header {
                 padding: 10px 0;
             }
@@ -650,14 +671,6 @@
 
             .main-logo {
                 max-width: 200px;
-            }
-
-            .video-title {
-                font-size: 36px;
-            }
-
-            .video-subtitle {
-                font-size: 18px;
             }
 
             .hero-section {
@@ -717,20 +730,24 @@
         }
 
         @media (max-width: 480px) {
+            .video-section {
+                height: 60vh;
+            }
+            
+            .video-title {
+                font-size: 28px;
+            }
+            
+            .video-subtitle {
+                font-size: 16px;
+            }
+            
             .hero-title {
                 font-size: 32px;
             }
 
             .hero-subtitle {
                 font-size: 18px;
-            }
-
-            .video-title {
-                font-size: 28px;
-            }
-
-            .video-subtitle {
-                font-size: 16px;
             }
 
             .gvita-features__title {
@@ -748,8 +765,8 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <!-- 로고 이미지 (1) - 추후 업로드 -->
-                <img src="https://via.placeholder.com/150x50/1a472a/FFFFFF?text=GVITA+LOGO" alt="GVITA 로고" class="logo-img">
+                <!-- 로고 이미지 (1) -->
+                <img src="gvita-logo.png" alt="GVITA 로고" class="logo-img">
                 <span class="logo-text">GVITA</span>
             </div>
             
@@ -760,7 +777,7 @@
             <nav id="mainNav">
                 <ul>
                     <li><a href="about-gvita.html">About GVITA</a></li>
-                    <li><a href="park-golf.html">파크 골프</a></li>
+                    <li><a href="https://thebestys.github.io/GVITAS/" target="_blank">파크 골프</a></li>
                     <li><a href="life-gvita.html">Life & GVITA</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
@@ -769,16 +786,11 @@
     </header>
 
     <main>
-        <!-- 중간 로고 이미지 (1) -->
-        <section class="logo-section">
-            <img src="https://via.placeholder.com/300x100/1a472a/FFFFFF?text=GVITA+SCREEN+GOLF" alt="GVITA 스크린파크골프" class="main-logo">
-        </section>
-
-        <!-- 골프샷 영상 (2) -->
+        <!-- 골프샷 영상 (2) - 헤더 바로 아래 -->
         <section class="video-section">
             <div class="video-container">
                 <video class="golf-video" autoplay muted loop playsinline>
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-golfer-swinging-a-golf-club-44356-large.mp4" type="video/mp4">
+                    <source src="videos/golf-shot.mp4" type="video/mp4">
                     이 브라우저는 비디오 태그를 지원하지 않습니다.
                 </video>
                 <div class="video-overlay">
@@ -786,6 +798,11 @@
                     <p class="video-subtitle">현실적인 골프 체험과 첨단 기술이 만나다. 어디서나 즐기는 파크 골프의 새로운 패러다임</p>
                 </div>
             </div>
+        </section>
+
+        <!-- 로고 섹션 -->
+        <section class="logo-section">
+            <img src="gvita-logo.png" alt="GVITA 스크린파크골프" class="main-logo">
         </section>
 
         <!-- 스크린 골프 소개 섹션 -->
@@ -826,7 +843,7 @@
             <section class="cta-section">
                 <h2 class="cta-title">지금 GVITA를 경험해보세요</h2>
                 <p class="cta-description">GVITA 스크린파크골프는 기존의 골프 경험을 넘어선 새로운 골프 문화를 제시합니다.</p>
-                <a href="park-golf.html" class="cta-button">무료 체험 예약하기</a>
+                <a href="https://thebestys.github.io/GVITAS/" target="_blank" class="cta-button">파크 골프 체험하기</a>
             </section>
         </div>
 
@@ -844,7 +861,7 @@
                     <!-- AI 기반 스윙 분석 이미지 (3) -->
                     <div class="gvita-features__card">
                         <img 
-                            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                            src="ai-swing-analysis.jpg" 
                             alt="AI 기반 스윙 분석" 
                             class="gvita-features__card-image"
                             loading="lazy"
@@ -857,7 +874,7 @@
                     <!-- 메타버스 파크 골프장 이미지 (4) -->
                     <div class="gvita-features__card">
                         <img 
-                            src="https://images.unsplash.com/photo-1587174486071-42e399bfcf65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                            src="metaverse-golf.jpg" 
                             alt="메타버스 파크 골프장" 
                             class="gvita-features__card-image"
                             loading="lazy"
@@ -883,7 +900,7 @@
                     <!-- 비용 절감 효과 이미지 (6) -->
                     <div class="gvita-features__card">
                         <img 
-                            src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                            src="costcut.jpg" 
                             alt="비용 절감 효과" 
                             class="gvita-features__card-image"
                             loading="lazy"
@@ -893,10 +910,10 @@
                         <p class="gvita-features__card-description">실제 골프장의 1/10 수준의 비용으로 프리미엄 골프를 즐길 수 있습니다. 회원권, 장비 렌탈, 이동 시간 등 모든 부가 비용을 절감할 수 있습니다.</p>
                     </div>
 
-                    <!-- 글로벌 네트워크: 이미지 (7) -->
+                    <!-- 글로벌 네트워크 이미지 (7) -->
                     <div class="gvita-features__card">
                         <img 
-                            src="https://images.unsplash.com/photo-1519677100203-5f5a1c56b7b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                            src="globalnetwork.jpg" 
                             alt="글로벌 네트워크" 
                             class="gvita-features__card-image"
                             loading="lazy"
@@ -986,10 +1003,26 @@
             });
         });
         
-        // 비디오 자동 재생 처리
-        const golfVideo = document.querySelector('.golf-video');
-        golfVideo.play().catch(error => {
-            console.log("자동 재생 차단됨:", error);
+        // 비디오 자동 재생 처리 (muted로 설정되어 있으므로 문제 없음)
+        document.addEventListener('DOMContentLoaded', function() {
+            const golfVideo = document.querySelector('.golf-video');
+            
+            // 비디오 자동 재생 시도
+            const playVideo = () => {
+                golfVideo.play().then(() => {
+                    console.log("비디오 자동 재생 성공");
+                }).catch(error => {
+                    console.log("비디오 자동 재생 실패:", error);
+                    // 사용자 상호작용 후 재생 시도
+                    document.addEventListener('click', function playAfterInteraction() {
+                        golfVideo.play();
+                        document.removeEventListener('click', playAfterInteraction);
+                    });
+                });
+            };
+            
+            // 페이지 로드 시 비디오 재생 시도
+            playVideo();
         });
     </script>
 </body>
