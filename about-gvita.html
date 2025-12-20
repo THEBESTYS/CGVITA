@@ -1,44 +1,1128 @@
-<!-- about.html 기본 구조 예시 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About GVITA - 프리미엄 스크린 골프</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/about.css">
+    <title>About GVITA - 프리미엄 하이브리드 스크린 파크 골프</title>
+    <style>
+        /* 기본 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        /* 공통 스타일 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: #1a5632;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: #1a5632;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #2e8b57;
+            margin: 15px auto 30px;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            color: #2e8b57;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* 헤더 */
+        header {
+            background-color: #1a5632;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #8fbc8f;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #8fbc8f;
+        }
+        
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            color: white;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* 기능 카드 */
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #2e8b57;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        /* 그리드 레이아웃 */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        /* 이미지 스타일 */
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* 아파트 브랜드 */
+        .apartment-brands {
+            background-color: #f0f8f0;
+            padding: 60px 0;
+        }
+        
+        .brand-logo {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .brand-logo h4 {
+            color: #1a5632;
+            font-weight: bold;
+        }
+        
+        /* 제품 구성 */
+        .product-spec {
+            background: white;
+            border-left: 5px solid #2e8b57;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* 창업 프로세스 */
+        .process-container {
+            position: relative;
+            padding-top: 50px;
+        }
+        
+        .process-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #2e8b57;
+        }
+        
+        .process-step {
+            position: relative;
+            margin-bottom: 50px;
+            width: 45%;
+        }
+        
+        .process-step:nth-child(odd) {
+            margin-right: auto;
+        }
+        
+        .process-step:nth-child(even) {
+            margin-left: auto;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background: #2e8b57;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        
+        .process-step:nth-child(odd) .step-number {
+            right: -75px;
+        }
+        
+        .process-step:nth-child(even) .step-number {
+            left: -75px;
+        }
+        
+        /* CTA 버튼 */
+        .cta-button {
+            display: inline-block;
+            background: #2e8b57;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.3s, transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: #1a5632;
+            transform: translateY(-3px);
+        }
+        
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(to right, #1a5632, #2e8b57);
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .cta-section h2 {
+            color: white;
+        }
+        
+        .cta-section h2:after {
+            background: white;
+        }
+        
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* 역사 타임라인 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 50px;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #2e8b57;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #2e8b57;
+        }
+        
+        .year {
+            font-weight: bold;
+            color: #2e8b57;
+            margin-bottom: 5px;
+        }
+        
+        /* 푸터 */
+        footer {
+            background: #1a5632;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            color: #8fbc8f;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 992px) {
+            .grid-3, .grid-4, .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-container:before {
+                left: 30px;
+            }
+            
+            .process-step {
+                width: 85%;
+                margin-left: 15% !important;
+            }
+            
+            .process-step:nth-child(odd) .step-number,
+            .process-step:nth-child(even) .step-number {
+                left: -65px;
+                right: auto;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding: 100px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- 헤더 및 네비게이션 -->
+    <!-- 헤더 -->
     <header>
-        <!-- 로고와 메뉴 -->
+        <div class="container header-container">
+            <a href="#" class="logo">G<span>VITA</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">기능</a></li>
+                    <li><a href="#product">제품</a></li>
+                    <li><a href="#process">창업프로세스</a></li>
+                    <li><a href="#company">회사소개</a></li>
+                    <li><a href="#contact" class="cta-button" style="padding: 10px 20px;">상담신청</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- 메인 컨텐츠 -->
-    <main>
-        <!-- 히어로 섹션 -->
-        <section class="hero-section">
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <div class="container">
             <h1>About GVITA</h1>
-            <p>프리미엄 파크골프의 새로운 기준</p>
-        </section>
+            <p>프리미엄 하이브리드 스크린 파크 골프의 새로운 기준</p>
+            <p>골프와 첨단 기술의 완벽한 결합, GVITA가 제시하는 미래의 골프 경험</p>
+            <a href="#contact" class="cta-button">상담 신청하기</a>
+        </div>
+    </section>
 
-        <!-- 본문 섹션들 -->
-        <section id="4k-hd">
+    <!-- 리얼 Full 4K HD -->
+    <section id="about">
+        <div class="container">
             <h2>리얼 Full 4K HD</h2>
-            <!-- 내용과 이미지 -->
-        </section>
+            <p class="section-subtitle">한 눈에 다른 그래픽의 차원. 오랜 개발 끝에 탄생한 초월적인 FULL-HD 품질이 구현한 넓은 화면과 선명함</p>
+            
+            <div class="grid-2">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1600673787275-7e5d6d7c4c67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="GVITA Full 4K HD 골프 시뮬레이션" class="img-fluid">
+                </div>
+                <div>
+                    <h3>차원이 다른 그래픽 품질</h3>
+                    <p>110개 골프 클럽마다 실물 같은 디테일로 깊은 현장감을 선사합니다. 동종 최고 수준의 그래픽을 바탕으로, 앞으로도 끊임없이 새로운 코스와 콘텐츠로 여러분을 찾아갑니다.</p>
+                    <p>GVITA의 Full 4K HD 기술은 단순한 해상도 향상을 넘어서, 빛의 반사, 그림자, 텍스처 디테일까지 실제와 구분할 수 없는 수준으로 구현합니다. 골퍼는 마치 실제 필드에 서 있는 것 같은 몰입감을 경험하게 됩니다.</p>
+                    <div class="feature-card" style="margin-top: 20px;">
+                        <h4>주요 그래픽 특징</h4>
+                        <p>• 4K UHD 해상도 지원</p>
+                        <p>• HDR(High Dynamic Range) 적용</p>
+                        <p>• 실시간 날씨 변화 시뮬레이션</p>
+                        <p>• 계절별 풍경 변화</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="practice-mode">
+    <!-- 연습장 모드 -->
+    <section id="features" style="background-color: #f8f9fa;">
+        <div class="container">
             <h2>연습장 모드</h2>
-            <!-- 3가지 연습장 설명 -->
-        </section>
+            <p class="section-subtitle">"데이터로 다지는 장타, 정밀도로 완성하는 어프로치, 감각으로 승부하는 퍼팅. 당신의 게임을 완성하는 3가지 특화 연습장."</p>
+            
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="feature-icon">⛳</div>
+                    <h3>장타 연습장</h3>
+                    <p>데이터로 완성하는 나만의 완벽 스윙. 실시간 스윙 분석과 함께, 비거리, 구질, 헤드스피드, 발사각 등 프로처럼 꼭 봐야 할 핵심 데이터를 한 눈에 확인하세요.</p>
+                    <p>과학적인 피드백으로 단숨에 나의 장타력을 진화시킬 수 있는 최적의 연습장입니다.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>어프로치 연습장</h3>
+                    <p>단 한 방이 스코어를 바꾼다! 승부는 그린 주변에서 결정됩니다. 내가 설정한 다양한 거리와 상황에서 정밀한 샷을 반복 연습하세요.</p>
+                    <p>방향과 거리 감각의 정확성을 극대화하여 핀을 노려잡는 숏게임의 달인이 되어보세요.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏌️</div>
+                    <h3>퍼팅 연습장</h3>
+                    <p>퍼팅은 심리전, 그리고 절대적인 거리감. 실제 필드 같은 다양한 환경과 모든 거리(단퍼트부터 롱퍼트까지)를 마스터할 수 있는 공간.</p>
+                    <p>눈으로 읽고, 몸으로 느끼는 퍼팅 감각을 길러 한 방의 결정적 퍼팅을 만들어보세요.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- 기타 섹션들... -->
-    </main>
+    <!-- 스윙코치AI -->
+    <section>
+        <div class="container">
+            <h2>스윙코치AI</h2>
+            <p class="section-subtitle">당신의 스윙, AI가 척척 분석합니다</p>
+            
+            <div class="grid-2">
+                <div>
+                    <h3>세계 최초 AI 스윙 코칭 시스템</h3>
+                    <p>더 이상 복잡한 선 그리기는 NO! 세계 최초 AI 스윙 코칭이 정면/측면의 동작을 자동으로 인식하고 분석합니다.</p>
+                    <p>잘못된 스윙 습관을 AI가 정확히 짚어주고, 올바른 스윙으로 가는 길을 제시합니다. 눈에 보이는 과학적 코칭으로 스윙을 혁신하세요.</p>
+                    
+                    <div class="product-spec">
+                        <h4>🤖 스윙코치AI 핵심 기능</h4>
+                        <p>이제는 선 그리기 직접 하지 마세요! 카메라 영상에서 골퍼의 어드레스 자세를 자동으로 감지하고, 정면과 측면 영상의 스윙자세를 자동으로 분석하여 그려주는 최첨단 AI(인공지능) 기술을 제공합니다.</p>
+                    </div>
+                    
+                    <div class="product-spec">
+                        <h4>⚡ 초고속 클럽비전</h4>
+                        <p>초고속카메라로 촬영된 임팩트 순간의 클럽헤드와 볼의 움직임을 정확하고 선명하게 영상으로 제공합니다. 그래픽 이미지를 제공하는 타사제품들과 차별화되며 실제 고화질 실사 영상을 슬로우 모션으로 경험할 수 있습니다.</p>
+                    </div>
+                    
+                    <div class="product-spec">
+                        <h4>🎯 선명한 클럽 라인! 고프레임 스윙비전</h4>
+                        <p>스윙비전에서도 높은 프레임 영상을 통해 블러나 잔상이 없는 선명한 클럽라인을 제공하여 스윙의 문제점 파악을 보다 직관적이고 정확하게 할 수 있습니다.</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1587174486073-ae7c6e0a1b07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="AI 스윙 분석 시스템" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 유명 브랜드 아파트 검증완료 -->
+    <section class="apartment-brands">
+        <div class="container">
+            <h2>유명 브랜드 아파트 검증완료</h2>
+            <p class="section-subtitle">입주민이 직접 선택한 스크린골프, GVITA</p>
+            
+            <p style="text-align: center; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                GVITA는 이미 국내 최정상 아파트 브랜드들의 선택을 받았습니다. 대우 푸르지오, 현대 힐스테이트, 롯데캐슬부터 삼성 래미안, 포스코 THE SHARP에 이르기까지, 주요 브랜드 아파트의 입주민들을 위한 시설로 폭발적인 인기를 얻으며 사업 영역을 확장하고 있습니다.
+            </p>
+            
+            <div class="grid-4">
+                <div class="brand-logo">
+                    <h4>대우 푸르지오</h4>
+                </div>
+                <div class="brand-logo">
+                    <h4>동부 센트레빌</h4>
+                </div>
+                <div class="brand-logo">
+                    <h4>현대 아이파크</h4>
+                </div>
+                <div class="brand-logo">
+                    <h4>롯데캐슬</h4>
+                </div>
+                <div class="brand-logo">
+                    <h4>삼성 래미안</h4>
+                </div>
+                <div class="brand-logo">
+                    <h4>현대 힐스테이트</h4>
+                </div>
+                <div class="brand-logo">
+                    <h4>포스코 THE SHARP</h4>
+                </div>
+                <div class="brand-logo">
+                    <h4>한화 꿈에그린</h4>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; font-style: italic; color: #666;">
+                <p>- 출처: 한국경제TV 보도자료 -</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2025년형 신제품 -->
+    <section id="product">
+        <div class="container">
+            <h2>2025년형 신제품</h2>
+            <p class="section-subtitle">한층 더 업그레이드 된 2025년형 신형 센서</p>
+            
+            <div class="grid-2">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="GVITA PLUS 센서" class="img-fluid">
+                </div>
+                <div>
+                    <h3>GVITA PLUS 센서 출시</h3>
+                    <p>최고의 성능을 위해 오랜 기간 R&D를 거쳐 개발된 GVITA PLUS가 출시되었습니다. 기존 센서보다 한층 더 업그레이드 된 고성능 신형 센서와 안정화 코드의 추가 적용으로 더욱 섬세해진 구질 표현이 가능하도록 최적화된 솔루션을 제공합니다.</p>
+                    
+                    <h4 style="margin-top: 30px;">IV2 PLUS 센서 핵심 기능</h4>
+                    
+                    <div class="product-spec">
+                        <h4>🤖 스윙코치AI</h4>
+                        <p>이제는 선 그리기 직접 하지 마세요! 카메라 영상에서 골퍼의 어드레스 자세를 자동으로 감지하고, 정면과 측면 영상의 스윙자세를 자동으로 분석하여 그려주는 최첨단 AI(인공지능) 기술을 제공합니다.</p>
+                    </div>
+                    
+                    <div class="product-spec">
+                        <h4>⚡ 초고속 클럽비전</h4>
+                        <p>초고속카메라로 촬영된 임팩트 순간의 클럽헤드와 볼의 움직임을 정확하고 선명하게 영상으로 제공합니다.</p>
+                    </div>
+                    
+                    <div class="product-spec">
+                        <h4>🎯 고프레임 스윙비전</h4>
+                        <p>스윙비전에서도 높은 프레임 영상을 통해 블러나 잔상이 없는 선명한 클럽라인을 제공하여 스윙의 문제점 파악을 보다 직관적이고 정확하게 할 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 통합 플랫폼 4종 제공 -->
+    <section style="background-color: #f0f8f0;">
+        <div class="container">
+            <h2>통합 플랫폼 4종 제공</h2>
+            <p class="section-subtitle">GVITA의 완벽한 디지털 에코시스템</p>
+            
+            <div class="grid-4">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>GVITA 매니저</h3>
+                    <p>매장 관리 시스템 타석 및 회원 관리 가능</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📲</div>
+                    <h3>GVITA 앱</h3>
+                    <p>타석예약, 연습정보 제공</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>GVITA Pro 앱</h3>
+                    <p>프로전용 앱 레슨 예약 현황, 스케줄관리</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <h3>GVITA 체크인</h3>
+                    <p>간편하게 회원이 직접 타석 줄서기 기능</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 제품 구성 -->
+    <section>
+        <div class="container">
+            <h2>제품 구성</h2>
+            <p class="section-subtitle">프리미엄 풀 패키지 시스템</p>
+            
+            <div class="grid-3">
+                <div class="feature-card">
+                    <h3>키오스크</h3>
+                    <p>24인치 터치모니터</p>
+                    <p>정면 스윙모션카메라 삽입</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>GVITA PLUS 센서</h3>
+                    <p>천장 설치형 초고속 카메라 센서</p>
+                    <p>샷 데이터 표현 가능</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>3채널 초고속 카메라</h3>
+                    <p>정면, 측면, 천장</p>
+                    <p>스윙모션 카메라</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>프로그램</h3>
+                    <p>6가지 연습장모드</p>
+                    <p>110개 골프 코스</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>프로젝터</h3>
+                    <p>밝기 : 6000 ANSI</p>
+                    <p>(Full-HD 1920x1080)</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>오토 티업기</h3>
+                    <p>자동 볼 공급기</p>
+                    <p>연습장 필수 아이템</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 창업 프로세스 -->
+    <section id="process" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2>창업 프로세스</h2>
+            <p class="section-subtitle">6단계로 완성하는 성공적인 스크린골프 창업</p>
+            
+            <div class="process-container">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="feature-card">
+                        <h3>제품 상담</h3>
+                        <p>02-866-5001 방문 상담 요청</p>
+                        <p>전문 상담사가 GVITA 시스템에 대한 상세한 설명과 함께 맞춤형 솔루션을 제안합니다.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="feature-card">
+                        <h3>영업팀 방문 상담</h3>
+                        <p>임팩트비전 제품 설명 설치 장소 검토</p>
+                        <p>전문 영업팀이 직접 방문하여 설치 장소를 검토하고 최적의 레이아웃을 설계합니다.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="feature-card">
+                        <h3>제품 계약</h3>
+                        <p>계약 완료 및 설치일 확정</p>
+                        <p>모든 조건이 맞춰지면 계약을 체결하고 설치 일정을 확정합니다.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="feature-card">
+                        <h3>인테리어, 제품설치</h3>
+                        <p>인테리어 공사 제품 설치 및 점검</p>
+                        <p>전문 설치팀이 인테리어 공사와 함께 시스템을 설치하고 철저한 점검을 진행합니다.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="feature-card">
+                        <h3>매장 운영 점검</h3>
+                        <p>슈퍼바이저 방문 운영방법 및 앱 교육</p>
+                        <p>전문 슈퍼바이저가 방문하여 운영 방법과 앱 사용법을 교육합니다.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="feature-card">
+                        <h3>그랜드 오픈</h3>
+                        <p>지속 운영지원 원격 점검 및 AS</p>
+                        <p>정식 오픈 후에도 지속적인 운영 지원과 원격 점검, 신속한 AS 서비스를 제공합니다.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <h3>하이브리드 스크린 파크골프 GVITA와 함께할 창업주를 찾습니다.</h3>
+                <a href="#contact" class="cta-button" style="margin-top: 20px;">상담 신청하기</a>
+                <a href="#" class="cta-button" style="margin-top: 20px; background: #666; margin-left: 10px;">제품 소개서 다운로드</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 하이브리드 스크린 파크골프 -->
+    <section>
+        <div class="container">
+            <h2>하이브리드 스크린 파크골프</h2>
+            <p class="section-subtitle">사내복지, 개인, 행사를 위한 유일한 골프 솔루션</p>
+            
+            <div class="grid-2">
+                <div>
+                    <h3>어디서나 즐기는 프리미엄 골프</h3>
+                    <p>스크린 파크 골프를 매장에서만 즐겨야 할까요? 이제는 나만의 공간에서 편안한 복장으로 원하는 시간에 매일 연습하고 무한 코스플레이를 즐겨보세요.</p>
+                    <p>조립형 홈 스크린 파크 골프는 골프를 사랑하는 골퍼님들을 위해 임팩트비전에서 홈 시뮬레이터용으로 제작하였습니다. 설치할 수 있는 공간만 있다면 인테리어 시공비가 전혀 들지 않고 조립형 텐트를 설치해서 매장과 동일하게 이용가능합니다. 회사, 주택, 펜션, 창고, 피팅센터 등 공간만 있다면 어디든지 설치 가능합니다.</p>
+                    
+                    <h4 style="margin-top: 30px;">설치 공간</h4>
+                    <p>가로3.8m × 세로7.5m × 높이3m</p>
+                    
+                    <h4>제품 사이즈</h4>
+                    <p>가로3.4m × 세로 6m × 높이2.7m</p>
+                    
+                    <h4>프리미엄 Full-HD 골프 코스</h4>
+                    <p>110개</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="홈 스크린골프 설치" class="img-fluid">
+                </div>
+            </div>
+            
+            <div style="margin-top: 60px;">
+                <h3 style="text-align: center;">홈 스크린골프 설치사례</h3>
+                <p style="text-align: center; margin-bottom: 40px;">GVITA 조립형 홈 스크린 파크 골프는 스크린 파크 골프 룸처럼 집안에 설치할 때도 유용하게 사용할 수 있습니다.</p>
+                
+                <div class="grid-3">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="홈 설치 사례 1" class="img-fluid">
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1586220742613-b731f66f7743?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="홈 설치 사례 2" class="img-fluid">
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1519861531473-920034658307?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="홈 설치 사례 3" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 사후관리 및 실적 -->
+    <section style="background-color: #f0f8f0;">
+        <div class="container">
+            <h2>철저한 사후관리와 검증된 실적</h2>
+            
+            <div class="grid-3">
+                <div class="feature-card">
+                    <h3>철저한 사후관리</h3>
+                    <p>CRM을 통한 전국 AS망 임팩트비전은 고객의 니즈를 빠짐없이 파악하고 자체 CRM시스템을 통해 신속한 커뮤니케이션과 안전한 사후 관리를 할 수 있도록 최선을 다하겠습니다.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>국내외 700여개의 매장 설치</h3>
+                    <p>임팩트비전은 4년 연속으로 인증을 획득한 기술평가 우수기업입니다. 설치된 매장은 해외를 포함해 전국 곳곳에 위치하고 있어 어디서든 쉽게 찾아 볼 수 있습니다.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>다년간의 노하우</h3>
+                    <p>700개 이상의 매장 그리고 3,000대가 넘는 시스템 설치 경험을 토대로 고객들이 필요로 하는 제품과 신뢰 할 수 있는 서비스를 제공해 드리기 위해 항상 노력하고 있습니다.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <h3>최근 설치매장 100+</h3>
+                <p>골프연습부터 필드게임까지 한번에 하이브리드 스크린파크골프 GVITA</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 회사 소개 -->
+    <section id="company">
+        <div class="container">
+            <h2>회사 소개</h2>
+            <p class="section-subtitle">2007년부터 이어온 골프 시뮬레이터 전문 기업</p>
+            
+            <div class="grid-2">
+                <div>
+                    <h3>GVITA의 비전</h3>
+                    <p>GVITA는 2007년부터 골프 시뮬레이터 전문 기업으로 개발연구에만 힘쓰다가 사업주와 개인 고객 분들에게 편리한 제품을 좋은 가격에 만나볼 수 있게 자체브랜드인 GVITA 스크린 파크 골프를 만들게 되었습니다.</p>
+                    <p>자체 개발사로 가격은 낮추고 성능은 향상시켜 고객이 원하는 스크린타석을 만들고 있습니다. 실내, 실외에서 수많은 테스트한 제품으로 정확도를 더욱 높여 신뢰할 수 있습니다. 개발, 생산부터 사후관리까지 본사에서 직접 관리하고 있어서 끝까지 책임지는 브랜드입니다.</p>
+                    <p>앞으로도 지속적인 애정으로 지켜봐 주시길 바라며 새롭게 변화하는 GVITA를 기대해 주시기 바랍니다.</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="GVITA 회사 비전" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 브랜드 아이덴티티 -->
+    <section style="background-color: #1a5632; color: white;">
+        <div class="container">
+            <h2 style="color: white;">GVITA 브랜드 아이덴티티</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">혁신과 프리미엄을 상징하는 브랜드 철학</p>
+            
+            <div class="grid-2">
+                <div>
+                    <h3 style="color: #8fbc8f;">브랜드 철학</h3>
+                    <p>GVITA의 CI는 혁신과 프리미엄을 상징합니다. 그린 컬러는 골프의 본질을, 모던한 디자인은 최첨단 기술을 나타냅니다. GVITA는 AI 기술과 메타버스 구현을 통해 기존 골프 시뮬레이션의 한계를 넘어서는 새로운 경험을 제공합니다.</p>
+                    <p>브랜드 네임 'GVITA'는 'Golf'와 'Vita'(생명, 삶을 의미하는 라틴어)의 합성어로, 골프가 주는 활력과 생명력을 의미하며, 모든 고객에게 특별한 골프 경험을 선사하겠다는 의지를 담고 있습니다.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 5rem; font-weight: bold; color: #8fbc8f;">GVITA</div>
+                    <p style="margin-top: 20px; font-style: italic;">Golf + Vita (생명, 삶)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 조직 구성 및 HISTORY -->
+    <section>
+        <div class="container">
+            <h2>조직 구성 및 HISTORY</h2>
+            
+            <div class="grid-2">
+                <div>
+                    <h3>조직 구성</h3>
+                    <div class="grid-2" style="margin-top: 30px;">
+                        <div class="product-spec">
+                            <h4>기술 연구소</h4>
+                            <p>핵심 기술 개발 및 연구</p>
+                        </div>
+                        <div class="product-spec">
+                            <h4>웹 개발팀</h4>
+                            <p>플랫폼 및 앱 개발</p>
+                        </div>
+                        <div class="product-spec">
+                            <h4>마케팅팀</h4>
+                            <p>브랜드 관리 및 홍보</p>
+                        </div>
+                        <div class="product-spec">
+                            <h4>경영지원팀</h4>
+                            <p>전략 기획 및 관리</p>
+                        </div>
+                        <div class="product-spec">
+                            <h4>영업팀</h4>
+                            <p>고객 상담 및 영업</p>
+                        </div>
+                        <div class="product-spec">
+                            <h4>기술지원팀</h4>
+                            <p>설치 및 AS 지원</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>HISTORY</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="year">2007</div>
+                            <p>골프시뮬레이터 개발 시작</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="year">2012</div>
+                            <p>임팩트비전 브랜드 런칭</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="year">2018</div>
+                            <p>조립형 홈 스크린골프 출시</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="year">2020</div>
+                            <p>기술연구소 설립, 해외 수출 시작</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="year">2022</div>
+                            <p>초고속 카메라 스윙분석 시스템 개발</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="year">2023</div>
+                            <p>Full-HD 골프코스 개발 완료</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="year">2024</div>
+                            <p>카메라센서 개발, 앱 출시</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="year">2025</div>
+                            <p>GVITA PLUS 신제품 출시</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About GVITA 요약 -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>About GVITA</h2>
+            <p class="section-subtitle">GVITA는 프리미엄 파크골프의 G와 라틴어 생명력을 뜻하는 VITA의 합성어로서 고객에게 생명력있는 프리미엄 파크 골프 경험을 제공합니다.</p>
+            
+            <div style="max-width: 800px; margin: 0 auto 50px;">
+                <p>리얼 Full 4K HD 그래픽, AI 스윙코치, 3가지 특화 연습장 모드, 통합 플랫폼, 그리고 국내 정상 아파트 브랜드들의 검증을 받은 GVITA는 이제 골프의 미래를 제시합니다.</p>
+                <p>창업을 고민하고 계신다면, 혹은 프리미엄 홈 골프 시스템을 원하신다면 지금 바로 상담 신청하세요.</p>
+            </div>
+            
+            <a href="tel:02-866-5001" class="cta-button">02-866-5001 전화 상담</a>
+            <a href="mailto:info@impactvision.co.kr" class="cta-button" style="margin-left: 20px; background: #444;">이메일 문의</a>
+        </div>
+    </section>
 
     <!-- 푸터 -->
     <footer>
-        <!-- 연락처 및 정보 -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>GVITA</h4>
+                    <p>프리미엄 하이브리드 스크린 파크 골프</p>
+                    <p>골프와 기술의 완벽한 조화</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>연락처</h4>
+                    <ul>
+                        <li><strong>전화:</strong> 02-866-5001</li>
+                        <li><strong>이메일:</strong> info@impactvision.co.kr</li>
+                        <li><strong>주소:</strong> 서울특별시 강남구 테헤란로 123</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>빠른 링크</h4>
+                    <ul>
+                        <li><a href="#about">About GVITA</a></li>
+                        <li><a href="#features">기능 소개</a></li>
+                        <li><a href="#product">제품 구성</a></li>
+                        <li><a href="#process">창업 프로세스</a></li>
+                        <li><a href="#company">회사 소개</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 GVITA by ImpactVision. All rights reserved.</p>
+                <p>본 페이지의 모든 내용과 이미지는 GVITA의 소유입니다. 무단 복제 및 배포를 금지합니다.</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // 간단한 스크롤 부드럽게 이동
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 헤더 스크롤 시 색상 변경
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(26, 86, 50, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.backgroundColor = '#1a5632';
+                header.style.backdropFilter = 'none';
+            }
+        });
+        
+        // 카드 호버 효과 강화
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // 페이지 로드 시 애니메이션
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+            
+            // 첫 번째 섹션에 약간의 애니메이션 추가
+            const firstSection = document.querySelector('.hero');
+            if(firstSection) {
+                firstSection.style.opacity = '0';
+                firstSection.style.transform = 'translateY(20px)';
+                firstSection.style.transition = 'opacity 0.8s, transform 0.8s';
+                
+                setTimeout(() => {
+                    firstSection.style.opacity = '1';
+                    firstSection.style.transform = 'translateY(0)';
+                }, 300);
+            }
+        });
+    </script>
 </body>
 </html>
